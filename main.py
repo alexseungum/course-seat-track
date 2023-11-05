@@ -4,6 +4,7 @@ import importlib
 COURSE_TO_DETECT = [
     'EECS127',
     'CS189',
+    'ENGIN125',
 ]
 
 def check_course_availability(course_name):
