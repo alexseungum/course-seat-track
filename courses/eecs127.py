@@ -19,10 +19,10 @@ class EECS127(BaseCourse):
     def extract_data(self, data_json):
         try:
             data = json.loads(data_json)
-            waitlisted = data.get('available', {}).get('enrollmentStatus', {}).get('waitlistedCount', 0)
-            max_waitlist = data.get('available', {}).get('enrollmentStatus', {}).get('maxWaitlist', 0)
-            available = max_waitlist - waitlisted > 0
-            message = f"{waitlisted} out of {max_waitlist} spots are taken."
+            enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('enrolledCount', 0)
+            max_enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('maxEnroll', 0)
+            available = max_enrolled - enrolled > 10
+            message = f"{enrolled} out of {max_enrolled} spots are taken."
             return available, message
         except json.JSONDecodeError as e:
             print(f"Failed to parse JSON: {e}")
