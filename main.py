@@ -15,7 +15,7 @@ def check_course_availability(course_name):
     if course_class is None:
         print(f"Course class for {course_name} not found in the module.")
         return None
-
+    
     course = course_class()
     return course.check_availability()
 
@@ -26,10 +26,15 @@ def main():
         sys.exit(1)
 
     available_courses = []
-    for course_name in course_names:
-        result = check_course_availability(course_name)
-        if result:
-            available_courses.append((course_name, result))
+    try:
+        for course_name in course_names:
+            result = check_course_availability(course_name)
+            if result:
+                available_courses.append((course_name, result))
+    except Exception as e:
+        print(f"Error while checking course availability: {e}")
+        # Reduce false email notifications by exiting with 0
+        sys.exit(0)
 
     if available_courses:
         print("\nAvailable courses:")
