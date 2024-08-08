@@ -21,7 +21,7 @@ class EECS151(BaseCourse):
             data = json.loads(data_json)
             enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('enrolledCount', 0)
             max_enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('maxEnroll', 0)
-            available = max_enrolled - enrolled > 4
+            available = max_enrolled - enrolled > 5
             message = f"{enrolled} out of {max_enrolled} spots are taken."
             return available, message
         except json.JSONDecodeError as e:
