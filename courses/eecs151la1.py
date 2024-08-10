@@ -5,7 +5,7 @@ from courses.base_course import BaseCourse
 
 class EECS151(BaseCourse):
     def __init__(self):
-        super().__init__("https://classes.berkeley.edu/content/2024-fall-eecs-151-001-lec-001")
+        super().__init__("https://classes.berkeley.edu/content/2024-fall-eecs-151la-001-lab-001")
 
     def parse_html(self, html):
         soup = BeautifulSoup(html, 'html.parser')
@@ -21,7 +21,7 @@ class EECS151(BaseCourse):
             data = json.loads(data_json)
             enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('enrolledCount', 0)
             max_enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('maxEnroll', 0)
-            available = max_enrolled - enrolled > 5 
+            available = max_enrolled - enrolled > 0
             message = f"{enrolled} out of {max_enrolled} spots are taken."
             return available, message
         except json.JSONDecodeError as e:
