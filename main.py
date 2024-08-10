@@ -1,7 +1,7 @@
 import sys
 import importlib
 
-COURSE_TO_DETECT = ['EECS151',]
+COURSE_TO_DETECT = ['EECS151','EECS151la1', 'EECS151la2']
 
 def check_course_availability(course_name):
     try:
