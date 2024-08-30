@@ -22,7 +22,7 @@ def main():
     course_names = COURSE_TO_DETECT
     if course_names is None or len(course_names) == 0:
         print("No courses are waiting to be detected. Consider either adding courses to the list or removing the action.")
-        sys.exit(1)
+        sys.exit(0)
 
     available_courses = []
     try:
