@@ -3,7 +3,7 @@ import json
 import sys
 from courses.base_course import BaseCourse
 
-class EECS151(BaseCourse):
+class cs189(BaseCourse):
     def __init__(self):
         super().__init__("https://classes.berkeley.edu/content/2025-spring-compsci-189-001-lec-001")
 
