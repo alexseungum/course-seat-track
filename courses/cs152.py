@@ -3,9 +3,9 @@ import json
 import sys
 from courses.base_course import BaseCourse
 
-class ENGIN_183D(BaseCourse):
+class cs152(BaseCourse):
     def __init__(self):
-        super().__init__("https://classes.berkeley.edu/content/2024-spring-engin-183d-001-sem-001")
+        super().__init__("https://classes.berkeley.edu/content/2025-spring-compsci-152-001-lec-001")
 
     def parse_html(self, html):
         soup = BeautifulSoup(html, 'html.parser')
@@ -20,8 +20,9 @@ class ENGIN_183D(BaseCourse):
         try:
             data = json.loads(data_json)
             enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('enrolledCount', 0)
-            available = enrolled > 59
-            message = f"{enrolled} enrolled out of 60 spots"
+            max_enrolled = data.get('available', {}).get('enrollmentStatus', {}).get('maxEnroll', 0)
+            available = max_enrolled - enrolled > 0 
+            message = f"{enrolled} out of {max_enrolled} spots are taken."
             return available, message
         except json.JSONDecodeError as e:
             print(f"Failed to parse JSON: {e}")
